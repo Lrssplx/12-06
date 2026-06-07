@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nosso Universo 💜</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Poppins', sans-serif;
+      background:#050816;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:'';
+      position:fixed;
+      width:100%;
+      height:100%;
+      background:
+      radial-gradient(circle at top, rgba(96,165,250,0.20), transparent 35%),
+      radial-gradient(circle at bottom, rgba(37,99,235,0.15), transparent 35%),
+      url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=1920&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+      z-index:-2;
+    }
+
+    body::after{
+      content:'';
+      position:fixed;
+      width:100%;
+      height:100%;
+      background:rgba(2,6,23,0.75);
+      z-index:-1;
+    }
+
+    header{
+      width:100%;
+      padding:20px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      backdrop-filter:blur(12px);
+      background:rgba(10,10,25,0.35);
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      z-index:100;
+    }
+
+    .logo{
+  font-size:20px;
+  font-weight:600;
+  color:#60a5fa;
+}
+
+    nav{
+      display:flex;
+      gap:25px;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      font-size:14px;
+      transition:.3s;
+    }
+
+    nav a:hover{
+      color:#ff7ad9;
+    }
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:140px 20px 80px;
+    }
+
+    .hero h1{
+      font-family:'Great Vibes', cursive;
+      font-size:70px;
+      max-width:900px;
+      line-height:1.3;
+      color:white;
+      text-shadow:0 0 20px rgba(255,255,255,0.3);
+    }
+
+    .hero p{
+      margin-top:25px;
+      color:#d4d4d8;
+      font-size:18px;
+    }
+
+    .btn{
+  margin-top:35px;
+  padding:15px 40px;
+  border:none;
+  border-radius:999px;
+  background:linear-gradient(
+    135deg,
+    #1e3a8a,
+    #2563eb
+  );
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  transition:.4s;
+  box-shadow:0 0 25px rgba(37,99,235,.4);
+}
+ .gift-button{
+
+    padding:30px 60px;
+    font-size:32px;
+    font-weight:bold;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+
+    background:linear-gradient(
+        135deg,
+        #1e3a8a,
+        #2563eb
+    );
+
+    color:white;
+
+    box-shadow:0 0 30px rgba(37,99,235,.5);
+
+    transition:.3s;
+}
+
+.gift-button:hover{
+
+    transform:scale(1.05);
+
+}
+    .btn:hover{
+      transform:translateY(-4px) scale(1.03);
+    }
+
+    .container{
+      width:90%;
+      max-width:1300px;
+      margin:auto;
+    }
+
+    .card{
+      background:rgba(13,17,40,0.6);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:24px;
+      padding:35px;
+      backdrop-filter:blur(14px);
+      margin-bottom:30px;
+      box-shadow:0 0 30px rgba(168,85,247,0.12);
+    }
+
+    .section-title{
+  font-size:28px;
+  margin-bottom:25px;
+  color:#60a5fa;
+}
+
+    .countdown{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:20px;
+      text-align:center;
+    }
+
+    .time-box{
+      padding:25px;
+      border-radius:20px;
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .time-box h2{
+  font-size:42px;
+  color:#60a5fa;
+}
+    .time-box span{
+      color:#cbd5e1;
+    }
+
+    .distance{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:30px;
+      text-align:center;
+    }
+
+    .city{
+      flex:1;
+    }
+
+   .city img{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid #60a5fa;
+}
+    .heart-line{
+      flex:1;
+      min-width:250px;
+      position:relative;
+    }
+
+    .line{
+  height:2px;
+  background:#60a5fa;
+  width:100%;
+  margin:20px 0;
+  position:relative;
+}
+    .line::after{
+      content:'💜';
+      position:absolute;
+      left:50%;
+      top:-18px;
+      transform:translateX(-50%);
+      font-size:28px;
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:20px;
+    }
+
+    .gallery img{
+      width:100%;
+      height:260px;
+      object-fit:cover;
+      border-radius:18px;
+      transition:.4s;
+    }
+
+    .gallery img:hover{
+      transform:scale(1.03);
+    }
+
+    .messages{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:20px;
+    }
+
+    .message-card{
+      background:rgba(255,255,255,0.03);
+      border-radius:20px;
+      padding:25px;
+      text-align:center;
+      transition:.3s;
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .message-card:hover{
+      transform:translateY(-5px);
+      border-color:#ff7ad9;
+    }
+
+    .message-card h3{
+      margin:15px 0;
+      font-size:18px;
+    }
+
+    .music-player{
+      display:flex;
+      gap:25px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .music-player img{
+      width:220px;
+      border-radius:20px;
+    }
+
+    .music-info h3{
+      font-size:28px;
+      margin-bottom:10px;
+    }
+
+    .music-info p{
+      color:#d4d4d8;
+    }
+
+    .code-box{
+      background:#020617;
+      padding:30px;
+      border-radius:20px;
+      overflow:auto;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+
+    pre{
+      color:#4ade80;
+      font-size:15px;
+      line-height:1.8;
+    }
+
+    .final{
+      text-align:center;
+      padding:80px 20px;
+    }
+
+    .final h2{
+      font-family:'Great Vibes', cursive;
+      font-size:70px;
+      line-height:1.4;
+    }
+
+    .final p{
+      margin-top:20px;
+      font-size:20px;
+      color:#93c5fd;
+    }
+
+    footer{
+      text-align:center;
+      padding:30px;
+      color:#94a3b8;
+    }
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:48px;
+      }
+
+      nav{
+        display:none;
+      }
+
+      .countdown{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .final h2{
+        font-size:48px;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+    <script>
+
+function unlockGift() {
+
+  document.getElementById("loadingGift").style.display = "block";
+
+  setTimeout(() => {
+
+    document.getElementById("loadingGift").innerHTML = `
+<pre style="color:white;">
+Executando surpresa...
+
+Carregando...
+Desbloqueando Gift Card
+Gift Card desbloqueado com sucesso ❤️
+</pre>
+    `;
+
+  }, 1500);
+
+  setTimeout(() => {
+
+    document.getElementById("gift").style.display = "block";
+
+  }, 3000);
+
+}
+
+</script>
+
+  <header>
+
+    <div class="logo"></div>
+
+    <nav>
+        <a href="#reunion">Reencontro</a>
+        <a href="#distance">Distância</a>
+        <a href="#memories">Memórias</a>
+        <a href="#music">Música</a>
+    </nav>
+
+  </header>
+
+  <section class="hero">
+
+  <h1>
+  Oi amor!<br>
+  Resolvi criar esse cantinho para celebrar mais um dia 12 de junho de muitos que ainda virão 
+</h1>
+   
+
+ <section class="card">
+
+  
+  <div class="music-player" style="
+    justify-content:center;
+    text-align:center;
+  ">
+
+    <div class="music-info" style="
+      max-width:700px;
+      width:100%;
+    ">
+
+      <p style="
+        margin-top:20px;
+        color:#93c5fd;
+        font-style:italic;
+        font-size:18px;
+        line-height:1.8;
+      ">
+        Essa página foi feita pensando em você 💜
+      </p>
+
+      <p style="
+        margin-top:20px;
+        color:#93c5fd;
+        font-style:italic;
+        font-size:18px;
+        line-height:1.8;
+      ">
+       
+      </p>
+
+      <p style="
+        margin-top:25px;
+        color:white;
+        font-size:22px;
+        font-weight:600;
+      ">
+         Continua descendo
+      </p>
+
+      <p style="
+        margin-top:15px;
+        color:white;
+        font-style:italic;
+        font-size:18px;
+      ">
+        Porque no final tem uma surpresa e espero que goste
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+  </section>
+
+  <div class="container">
+
+   <section class="card">
+
+  <h2 class="section-title">
+    ✈️ Nosso reencontro
+  </h2>
+
+  <div class="countdown">
+
+    <div class="time-box">
+      <h2 id="days">0</h2>
+      <span>Dias</span>
+    </div>
+
+    <div class="time-box">
+      <h2 id="hours">0</h2>
+      <span>Horas</span>
+    </div>
+
+    <div class="time-box">
+      <h2 id="minutes">0</h2>
+      <span>Minutos</span>
+    </div>
+
+    <div class="time-box">
+      <h2 id="seconds">0</h2>
+      <span>Segundos</span>
+    </div>
+
+  </div>
+
+  <div style="
+    margin-top:35px;
+    text-align:center;
+  ">
+
+    <p style="
+      font-size:20px;
+      color:white;
+      margin-bottom:10px;
+    ">
+      Primeiramente acho que temos um Date em:
+    </p>
+
+    <h3 style="
+      font-size:30px;
+      color:white;
+      margin-bottom:15px;
+    ">
+      26/11/2026  
+    </h3>
+
+    <p style="
+      color:White;
+      font-size:16px;
+      max-width:700px;
+      margin:auto;
+      line-height:1.8;
+    ">
+      Contando cada minuto para te ver de novo e criar novas memórias juntas, pois só quem se arrisca merece viver o extraordinário KKKK 💜
+    </p>
+
+  </div>
+
+</section>
+
+    <section class="card">
+
+      <h2 class="section-title">
+        🌍 Nossa distância
+      </h2>
+
+      <div class="distance">
+
+        <div class="city">
+          <img src="./img/jpa.jpg"
+         
+          <p>João Pessoa - PB</p>
+        </div>
+
+        <div class="heart-line">
+          <div class="line"></div>
+          <p>Pra te lembrar que mesmo longe, sempre estaremos juntas  💜</p>
+        </div>
+
+        <div class="city">
+          <img src="./img/bh.jpg"
+          
+          <p>Belo Horizonte - MG  </p>
+        </div>
+
+      </div>
+
+    </section>
+<section class="card">
+
+  <h2 class="section-title">
+    📸 Nossas memórias
+  </h2>
+
+  <div class="gallery">
+
+    <img src="./img/foto-1.jpeg" alt="Nossa foto 1">
+
+    <img src="./img/foto-2.jpeg" alt="Nossa foto 2">
+
+    <img src="./img/foto-3.jpeg" alt="Nossa foto 3">
+
+    <img src="./img/foto-4.jpeg" alt="Nossa foto 4">
+
+  </div>
+
+</section>
+<section class="card">
+
+  <h2 class="section-title" style="text-align:center;">
+    🎵 Música que me lembra você
+  </h2>
+
+  <div class="music-player" style="
+    justify-content:center;
+    text-align:center;
+  ">
+
+    <div class="music-info" style="
+      max-width:700px;
+      width:100%;
+    ">
+
+      <p style="
+      color:White;
+      font-size:16px;
+      max-width:700px;
+      margin:auto;
+      line-height:1.8;
+      ">
+       Até comecei a gostar mais de Skank por sua causa, então não poderia ser outra música ✨
+      </p>
+
+      <iframe
+        style="
+          border-radius:12px;
+          margin-top:25px;
+        "
+        src="https://open.spotify.com/embed/track/7dxK6RSoCWZcb5gobxs1h9"
+        width="100%"
+        height="152"
+        frameborder="0"
+        allowfullscreen=""
+        allow="clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy">
+      </iframe>
+
+    </div>
+
+  </div>
+
+</section>
+
+ <div style="text-align:center;margin-top:30px;">
+
+  <button class="btn" onclick="unlockGift()">
+    Clique para executar a surpresa
+  </button>
+
+  <div id="loadingGift" style="display:none;margin-top:20px;">
+    <pre style="color:#023ee2;">
+ 
+    </pre>
+  </div>
+
+  <div id="gift" style="display:none;margin-top:25px;">
+
+    <div style="
+      background:linear-gradient(
+    135deg,
+    #1e3a8a,
+    #2563eb
+  );
+      padding:30px;
+      border-radius:20px;
+      color:white;
+      max-width:600px;
+      margin:auto;
+    ">
+
+      <h2> Presente desbloqueado</h2>
+
+      <p style="margin-top:15px;line-height:1.8;">
+        
+      </p>
+
+      <h3 style="margin-top:25px;">
+        Gift Card Cacau Show
+      </h3>
+
+      <p style="margin-top:15px;">
+        PIN Digital:
+      </p>
+
+     <h1 style="
+  margin-top:10px;
+  letter-spacing:4px;
+  background:white;
+  color:#2563eb;
+  padding:15px;
+  border-radius:10px;
+">
+        0KDZBL1UJ
+      </h1>
+
+    </div>
+
+  </div>
+
+</div>
+
+  <section class="final">
+
+    <h2>
+     Feliz dias dos Namorados 💜
+    </h2>
+
+    
+
+  </section>
+
+  
+   <script>
+
+  // DATA DO REENCONTRO
+  const reunionDate = new Date("2026-11-26T17:00:00");
+
+  function updateCountdown() {
+
+    const now = new Date();
+    const difference = reunionDate - now;
+
+    if (difference <= 0) {
+
+      document.getElementById("days").innerText = "0";
+      document.getElementById("hours").innerText = "0";
+      document.getElementById("minutes").innerText = "0";
+      document.getElementById("seconds").innerText = "0";
+
+      return;
+    }
+
+    const days = Math.floor(
+      difference / (1000 * 60 * 60 * 24)
+    );
+
+    const hours = Math.floor(
+      (difference % (1000 * 60 * 60 * 24)) /
+      (1000 * 60 * 60)
+    );
+
+    const minutes = Math.floor(
+      (difference % (1000 * 60 * 60)) /
+      (1000 * 60)
+    );
+
+    const seconds = Math.floor(
+      (difference % (1000 * 60)) /
+      1000
+    );
+
+    document.getElementById("days").innerText = days;
+    document.getElementById("hours").innerText = hours;
+    document.getElementById("minutes").innerText = minutes;
+    document.getElementById("seconds").innerText = seconds;
+
+  }
+
+  updateCountdown();
+
+  setInterval(updateCountdown, 1000);
+
+</script>   
+
+</body>
+</html>
