@@ -63,20 +63,23 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    /* sobe todo o conteúdo */
+    transform: translateY(-50px) translateX(100%);
+
     opacity: 0;
-    transform: translateX(100%);
     transition: opacity 0.5s ease, transform 0.5s ease;
-  }
+}
 
-  .slide.active {
+.slide.active {
     opacity: 1;
-    transform: translateX(0);
-  }
+    transform: translateY(-50px) translateX(0);
+}
 
-  .slide.exit {
+.slide.exit {
     opacity: 0;
-    transform: translateX(-100%);
-  }
+    transform: translateY(-50px) translateX(-100%);
+}
 
   /* Slide 1 - Abertura */
   .slide-1 {
